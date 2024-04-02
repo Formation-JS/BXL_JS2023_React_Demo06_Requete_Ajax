@@ -1,16 +1,29 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import clsx from 'clsx';
+import style from './request-color.module.css';
 
 const ColorLoader = () => (
-    <div>
-        <p>Chargement...</p>
-    </div>
+    <div className={style['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
 );
 
 const ColorFound = ({name, theme, group, code}) => {
 
+    // Les classeNames sont généré par clsx 
+    const classNameFound = clsx(
+        style['found'],
+        theme === 'light' && style['light'],
+        theme === 'dark' && style['dark'],
+    )
+
+    // CSS in JS pour gérer les couleurs
+    const styleColor = {
+        backgroundColor: `#${code}`,
+        borderColor: `#${code}`
+    }
+
     return (
-        <div>
+        <div className={classNameFound} style={styleColor}>
             <p>Couleur : {name}</p>
             <p>Theme : {theme}</p>
             <p>Groupe : {group}</p>
@@ -19,7 +32,7 @@ const ColorFound = ({name, theme, group, code}) => {
 };
 
 const ColorError = () => (
-    <div>
+    <div className={style['error']}>
         <p>Couleur non trouvé (´。＿。｀)</p>
     </div>
 )

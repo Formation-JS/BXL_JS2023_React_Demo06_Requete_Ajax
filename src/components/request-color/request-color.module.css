@@ -1,0 +1,93 @@
+/***** Color Loader *****/
+.lds-ellipsis,
+.lds-ellipsis div {
+  box-sizing: border-box;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33.33333px;
+  width: 13.33333px;
+  height: 13.33333px;
+  border-radius: 50%;
+  background: currentColor;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+/***** Color Found *****/
+.found {
+    border-style: solid;
+    border-width: 0.5ch;
+    padding: 1ch;
+    /* Le background-color et le border-color sont géré par le composant */
+}
+.found > p:first-child {
+    font-weight: bold;
+}
+
+.found.light {
+    color: black;
+}
+
+.found.dark {
+    color: whitesmoke;
+}
+
+/***** Color Error *****/
+.error {
+    background: repeating-linear-gradient(
+        45deg,
+        whitesmoke,
+        whitesmoke 2ch,
+        hotpink 2ch,
+        hotpink 2.5ch
+    );
+    border : solid 0.5ch hotpink;
+    padding: 1ch;
+    font-weight: bold;
+}
